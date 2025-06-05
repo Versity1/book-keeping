@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+{% block title %}
+   {{ title }}
+{% endblock %}
+{% block content %}
+   
+    <!-- table content -->
+    <div class="overflow-x-auto">
+        <h1 class="text-center font-bold">The Products List</h1>
+        
+        <table class="table">
+            <!-- head -->
+            <thead>
+            <tr>
+                <th>
+                <label>
+                    <input type="checkbox" class="checkbox" />
+                </label>
+                </th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Cost Price</th>
+                <th>Selling Price</th>
+                <th>Profit</th>
+                <th>Quantity</th>
+                <th>Date Purchased</th>
+                <th>Expring Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- row 1 -->
+             {% for product in products %}
+            <tr>
+                <th>
+                <label>
+                    <input type="checkbox" class="checkbox" />
+                </label>
+                </th>
+                <td>
+                <div class="flex items-center gap-3">
+                    <div class="avatar">
+                        <div class="mask mask-squircle h-12 w-12">
+                            <img src="{{ product.product_image.url }}" alt="">
+                        </div>
+                    </div>
+                </div>
+                </td>
+                <td>{{ product.product_name }}</td>
+                <td>₦{{ product.cost_price }}</td>
+                <td>₦{{ product.sells_price }}</td>
+                <td>₦{{ product.profit_amount }}</td>
+                <td>{{ product.quantity }}</td>
+                <td>{{ product.date_purchased }}</td>
+                <td>{{ product.expiry_date }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <!-- end table -->
+{% endblock %}
